@@ -1,0 +1,15 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:stable
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d:ro
+      - ./www:/var/www:ro
+      - ./log:/var/log/nginx
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 80:80
+    extra_hosts:
+      - 'nodejs:172.18.58.232'
+    restart: always
